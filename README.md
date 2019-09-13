@@ -20,6 +20,7 @@ it is supposed to integrate with Kafka to create order events to be consumed by 
 ## Testing
 
 To run the application start postgreSQL server, create purchaseOrder DB username: learning password: password123
+launch kafka server, create purchase-order topic
 type .\mvnw compile quarkus:dev
 
 Create order:
@@ -27,7 +28,7 @@ curl -X POST \
   http://localhost:8080/purchaseorder \
   -H 'Accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '{
+  -d '
 	"salesPersonId": 1,
     "productName": "forks",
     "location": "Cairo",

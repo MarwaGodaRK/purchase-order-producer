@@ -1,6 +1,8 @@
 package org.learning.service;
 
 
+import org.eclipse.microprofile.reactive.messaging.Outgoing;
+import org.learning.integration.KafkaProducer;
 import org.learning.model.OrderStatus;
 import org.learning.model.PurchaseOrder;
 import org.learning.repository.PurchaseOrderRepository;
@@ -16,6 +18,8 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
 
     @Inject
     PurchaseOrderRepository purchaseOrderRepository;
+    @Inject
+    KafkaProducer kafkaProducer;
 
     @Override
     public List<PurchaseOrder> getPurchaseOrderList(int salesPersonId) {
@@ -27,6 +31,10 @@ public class PurchaseOrderServiceImpl implements PurchaseOrderService {
     @Transactional
     public PurchaseOrder createPurchaseOrder(PurchaseOrder purchaseOrder) {
          purchaseOrderRepository.persist(mapModelToEntity(purchaseOrder));
+
+         // publish to kafka
+        kafkaProducer.send(purchaseOrder);
+
          return purchaseOrder;
     }
 
