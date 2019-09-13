@@ -9,7 +9,7 @@ it is supposed to integrate with Kafka to create order events to be consumed by 
 - [x] Create project skeleton
 - [x] create model, entities, service, resource and repository
 - [x] Use JPA entity manager to persist and retrieve from PostgreSQL
-- [ ] Integrate with Kafka
+- [x] Integrate with Kafka
 - [ ] add security
 - [ ] add junit
 - [ ] add logging
