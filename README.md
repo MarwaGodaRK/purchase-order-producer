@@ -23,21 +23,21 @@ To run the application start postgreSQL server, create purchaseOrder DB username
 type .\mvnw compile quarkus:dev
 
 Create order:
-
-POST /purchaseorder HTTP/1.1
-Host: localhost:8080
-Content-Type: application/json
-Accept: */*
-{
+curl -X POST \
+  http://localhost:8080/purchaseorder \
+  -H 'Accept: */*' \
+  -H 'Content-Type: application/json' \
+  -d '{
 	"salesPersonId": 1,
     "productName": "forks",
     "location": "Cairo",
     "quantity": 10,
     "forCompaniesOnly":true
-}
+}'
 
 Get orders:
 
-GET /purchaseorder/1 HTTP/1.1
-Host: localhost:8080
-Accept: */*
+curl -X GET \
+  http://localhost:8080/purchaseorder/1 \
+  -H 'Accept: */*' \
+  -H 'Content-Type: application/json' \
