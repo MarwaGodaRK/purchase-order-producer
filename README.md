@@ -21,24 +21,24 @@ it is supposed to integrate with Kafka to create order events to be consumed by 
 
 To run the application start postgreSQL server, create purchaseOrder DB username: learning password: password123
 launch kafka server, create purchase-order topic
-type .\mvnw compile quarkus:dev
+type `.\mvnw compile quarkus:dev`
 
 Create order:
-curl -X POST \
+`curl -X POST \
   http://localhost:8080/purchaseorder \
   -H 'Accept: */*' \
   -H 'Content-Type: application/json' \
-  -d '
+  -d '{
 	"salesPersonId": 1,
     "productName": "forks",
     "location": "Cairo",
     "quantity": 10,
     "forCompaniesOnly":true
-}'
+}'`
 
 Get orders:
 
-curl -X GET \
+`curl -X GET \
   http://localhost:8080/purchaseorder/1 \
   -H 'Accept: */*' \
-  -H 'Content-Type: application/json' \
+  -H 'Content-Type: application/json'`
