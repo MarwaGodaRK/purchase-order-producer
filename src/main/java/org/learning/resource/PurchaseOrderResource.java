@@ -21,7 +21,7 @@ public class PurchaseOrderResource {
     public List<PurchaseOrder> getPurchaseOrderList(@PathParam("salesPersonId") int salesPersonId) {
         return purchaseOrderService.getPurchaseOrderList(salesPersonId);
     }
-
+    //TODO add validation
     @POST
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
